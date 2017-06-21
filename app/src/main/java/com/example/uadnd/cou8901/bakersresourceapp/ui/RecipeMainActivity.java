@@ -1,9 +1,11 @@
 package com.example.uadnd.cou8901.bakersresourceapp.ui;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.PersistableBundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.uadnd.cou8901.bakersresourceapp.R;
 import com.example.uadnd.cou8901.bakersresourceapp.cp.BakersResourceContract;
@@ -57,6 +60,7 @@ public class RecipeMainActivity extends AppCompatActivity implements
         } else {
             getSupportLoaderManager().initLoader(RECIPE_LOADER_ID, null, RecipeMainActivity.this);
         }
+         // We will use shared preferences to store latest recipe visited.
 
         // Moved to async background thread
         //getSupportLoaderManager().initLoader(RECIPE_LOADER_ID, null, RecipeMainActivity.this);
@@ -166,7 +170,8 @@ public class RecipeMainActivity extends AppCompatActivity implements
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if(s.equals("")) {
-                return;
+                Toast.makeText(mContext, getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+                //return;
             } else {
                 Recipes recipes = GsonParser.parse(s);
                 mContext.deleteDatabase(DATABASE_NAME);  // Delete the DB for a fresh load

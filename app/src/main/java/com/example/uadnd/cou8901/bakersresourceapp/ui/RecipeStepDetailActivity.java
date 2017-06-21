@@ -181,6 +181,16 @@ public class RecipeStepDetailActivity extends AppCompatActivity  implements View
         }
 
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(mExoPlayer != null) {
+            mExoPlayer.stop();
+            mExoPlayer.release();
+            mExoPlayer = null;
+        }
+
+    }
 
     @Override
     public void onClick(View v) {

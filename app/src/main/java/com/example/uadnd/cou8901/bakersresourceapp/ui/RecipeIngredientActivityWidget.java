@@ -2,6 +2,7 @@ package com.example.uadnd.cou8901.bakersresourceapp.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -42,10 +43,15 @@ public class RecipeIngredientActivityWidget extends AppCompatActivity  implement
         setContentView(R.layout.activity_recipe_ingredients_widget);
 
         mContext = this;
-        Intent intent = getIntent();
-        if(intent.hasExtra("RECIPE_ID")) {
-            recipeId = intent.getIntExtra("RECIPE_ID", 1);
-        }
+
+//        Intent intent = getIntent();
+//        if(intent.hasExtra("RECIPE_ID")) {
+//            recipeId = intent.getIntExtra("RECIPE_ID", 1);
+//        }
+         //We will get the preferred recipe_id from shared preferences now.
+        SharedPreferences sharedPref = mContext.getSharedPreferences(getString(R.string.app_shared_pref_file), Context.MODE_PRIVATE) ;
+        recipeId = sharedPref.getInt(getString(R.string.key_favorite_recipe_id), 1);
+
         // Bind the views
         ButterKnife.bind(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

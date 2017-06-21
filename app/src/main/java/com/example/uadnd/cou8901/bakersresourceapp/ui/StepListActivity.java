@@ -311,6 +311,7 @@ public class StepListActivity extends AppCompatActivity  implements
                         intent.putExtra(StepDetailFragment.STEP_SHORT_DESCRIPTION, holder.mItem.getShortDescription());
                         intent.putExtra(StepDetailFragment.STEP_DESCRIPTION, holder.mItem.getDescription());
                         intent.putExtra(StepDetailFragment.STEP_VEDEO_URL, holder.mItem.getVideoURL());
+                        intent.putExtra(StepDetailFragment.STEP_THUMB_NAIL_URL, holder.mItem.getThumbnailURL());
 
                         context.startActivity(intent);
 

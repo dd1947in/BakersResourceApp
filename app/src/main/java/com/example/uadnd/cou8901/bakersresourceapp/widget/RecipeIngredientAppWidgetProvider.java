@@ -9,6 +9,7 @@ import android.widget.RemoteViews;
 
 import com.example.uadnd.cou8901.bakersresourceapp.R;
 import com.example.uadnd.cou8901.bakersresourceapp.ui.RecipeIngredientActivity;
+import com.example.uadnd.cou8901.bakersresourceapp.ui.RecipeIngredientActivityWidget;
 import com.example.uadnd.cou8901.bakersresourceapp.ui.RecipeMainActivity;
 import com.example.uadnd.cou8901.bakersresourceapp.ui.RecipeMainActivityWidget;
 
@@ -21,7 +22,8 @@ public class RecipeIngredientAppWidgetProvider extends AppWidgetProvider {
                                 int appWidgetId) {
 
         CharSequence widgetText = context.getString(R.string.appwidget_text);
-        Intent intent = new Intent(context, RecipeMainActivityWidget.class);
+        //Intent intent = new Intent(context, RecipeMainActivityWidget.class);
+        Intent intent = new Intent(context, RecipeIngredientActivityWidget.class);
 
 
 

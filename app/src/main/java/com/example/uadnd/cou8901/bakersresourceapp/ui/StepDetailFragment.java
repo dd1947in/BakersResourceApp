@@ -12,6 +12,7 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.uadnd.cou8901.bakersresourceapp.R;
@@ -33,6 +34,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.squareup.picasso.Picasso;
 
 import timber.log.Timber;
 
@@ -59,6 +61,7 @@ public class StepDetailFragment extends Fragment   implements View.OnClickListen
 
     private SimpleExoPlayer mExoPlayer;
     private SimpleExoPlayerView mPlayerView;
+    private ImageView mThumbnailView;// Added after review 1
     private static MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
     private NotificationManager mNotificationManager;
@@ -116,12 +119,20 @@ public class StepDetailFragment extends Fragment   implements View.OnClickListen
         View rootView = inflater.inflate(R.layout.step_detail, container, false);
 
         mPlayerView = (SimpleExoPlayerView) rootView.findViewById(R.id.sepv_step_video);
+       mThumbnailView = (ImageView) rootView.findViewById(R.id.iv_step_video_thumbnail);  // Added after review 1
         stepTextView = (TextView) rootView.findViewById(R.id.step_detail);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             //((TextView) rootView.findViewById(R.id.step_detail)).setText(mItem.details);
             ((TextView) rootView.findViewById(R.id.step_detail)).setText( mItem.getDescription());
+            String thumbnailUrl = mItem.getThumbnailURL();
+            if(!thumbnailUrl.equals("")) {
+                Picasso.with(mContext).load(thumbnailUrl).fit().into(mThumbnailView);
+            } else {
+                mThumbnailView.setImageResource(R.mipmap.ic_launcher_round);
+            }
+
         // Initialize the player.
         String videoUrl = mItem.getVideoURL(); //"https://d17h27t6h515a5.cloudfront.net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4";
         if(!videoUrl.equals("")) {
@@ -211,6 +222,16 @@ public class StepDetailFragment extends Fragment   implements View.OnClickListen
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(mExoPlayer != null) {
+            mExoPlayer.stop();
+            mExoPlayer.release();
+            mExoPlayer = null;
+        }
+
+    }
 
     @Override
     public void onClick(View v) {

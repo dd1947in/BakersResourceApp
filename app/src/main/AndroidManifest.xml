@@ -84,7 +84,18 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/recipe_ingredient_app_widget_info" />
         </receiver>
+        <activity
+            android:name=".ui.RecipeIngredientActivityWidget"
+            android:label="@string/appwidget_text"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
         <activity
             android:name=".ui.RecipeMainActivityWidget"
             android:label="@string/appwidget_text"
@@ -95,6 +106,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.RecipeIngredientActivityWidget"
             android:label="@string/recipe_ingredients"
@@ -103,6 +115,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.RecipeMainActivityWidget" />
         </activity>
+        -->
         <!--
         <activity
             android:name=".ui.StepListActivity"
