@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Bakers Resource App</string>
+    <string name="recipe">Recipe</string>
+    <string name="step">Step</string>
+    <string name="step_description">Step Description</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="recipe_steps">Recipe Steps</string>
+    <string name="recipe_ingredients">Recipe Ingredients</string>
+
+    <string name="show_ingredients_right_arrow">Show Ingredients --&gt;</string>
+    <string name="show_steps_left_arrow">&lt;-- Show Steps</string>
+    <string name="show_video_and_descriptiom">Step Video and Description</string>
+    <string name="show_ingredients">Show Ingredients</string>
+
+    <string name="quantity_label">Quantity :</string>
+    <string name="measure_label">Measure :</string>
+    <string name="ingredient_label">Ingredient :</string>
+    <string name="baking_recipe_url">https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json</string>
+    <string name="appwidget_text">Ingredients Widget</string>
+    <string name="add_widget">Add widget</string>
+
+    <!-- Keys for saving and restoring recycler view states -->
+    <string name="SCROLLX">SCROLLX</string>
+    <string name="SCROLLY">SCROLLY</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_step_list">Steps</string>
+    <string name="title_step_detail">Step Detail</string>
+
+
+</resources>

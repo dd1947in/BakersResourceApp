@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_recipe"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    tools:context="com.example.uadnd.cou8901.bakersresourceapp.ui.RecipeMainActivity"
+    android:weightSum="1">
+
+
+    <ImageView
+        android:id="@+id/iv_recipe_image"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+
+        app:srcCompat="@drawable/sample_bake_image" />
+
+    <TextView
+        android:id="@+id/tv_recipe_name"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:textStyle="bold"
+        android:textAppearance="?attr/textAppearanceListItem"/>
+    <!-- Removed bold / and color
+android:background="@android:color/holo_orange_light"
+
+android:text=""
+android:textSize="24sp"
+android:textColor="@color/colorPrimaryDark"
+android:textStyle="bold"-->
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimaryDark"/>
+
+
+</LinearLayout>
