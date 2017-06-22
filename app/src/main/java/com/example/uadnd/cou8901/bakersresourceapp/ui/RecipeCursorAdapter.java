@@ -59,7 +59,7 @@ public class RecipeCursorAdapter extends RecyclerView.Adapter<RecipeCursorAdapte
 
         mCursor.moveToPosition(position);
         final int recipeId = mCursor.getInt(recipeIdIndex);
-        String name = mCursor.getString(nameIndex);
+        final String name = mCursor.getString(nameIndex);
         String servings = mCursor.getString(servingsIndex);
         String image = mCursor.getString(imageIndex); // URL
 
@@ -78,7 +78,8 @@ public class RecipeCursorAdapter extends RecyclerView.Adapter<RecipeCursorAdapte
                Timber.d("onClick");
                 //Toast.makeText(mContext, "On Click Listener", Toast.LENGTH_LONG).show();
                 //Let us use to save the recipe_id that we visited latest and use it to server ingredients for the widget
-                writeToSharedPref(mContext.getString(R.string.key_favorite_recipe_id), recipeId);
+                writeToSharedPref(mContext.getString(R.string.key_favorite_recipe_id), String.valueOf(recipeId));
+                writeToSharedPref(mContext.getString(R.string.key_favorite_recipe_name), name);
                 Intent recipeStepIntent = new Intent(mContext, StepListActivity.class );
                 recipeStepIntent.putExtra("RECIPE_ID", recipeId);
                 Bundle bundle = new Bundle();
@@ -92,7 +93,7 @@ public class RecipeCursorAdapter extends RecyclerView.Adapter<RecipeCursorAdapte
                 //Toast.makeText(mContext, "On Click Listener", Toast.LENGTH_LONG).show();
                 //Intent recipeStepIntent = new Intent(mContext, RecipeStepActivity.class );  // Design changed to Mastere Detail Flow with Fragment
                 //Review 1
-                writeToSharedPref(mContext.getString(R.string.key_favorite_recipe_id), recipeId);
+                writeToSharedPref(mContext.getString(R.string.key_favorite_recipe_id), String.valueOf(recipeId));
                 Intent recipeStepIntent = new Intent(mContext, StepListActivity.class );
                 recipeStepIntent.putExtra("RECIPE_ID", recipeId);
                 Bundle bundle = new Bundle();
@@ -100,14 +101,13 @@ public class RecipeCursorAdapter extends RecyclerView.Adapter<RecipeCursorAdapte
                 startActivity(mContext, recipeStepIntent, bundle);  // on click start detail activity
             }
         });
-
     }
 
-    private void writeToSharedPref(String key, int val) {
+    private void writeToSharedPref(String key, String val) {
 
         SharedPreferences sharedPref = mContext.getSharedPreferences(mContext.getString(R.string.app_shared_pref_file), Context.MODE_PRIVATE) ; //getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(key, val);
+        editor.putString(key, val);
         editor.commit();
     }
 
@@ -145,6 +145,5 @@ public class RecipeCursorAdapter extends RecyclerView.Adapter<RecipeCursorAdapte
             Timber.d("RecipeViewHolder");
             ButterKnife.bind(this, view);
         }
-
     }
 }

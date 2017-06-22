@@ -23,7 +23,7 @@ import timber.log.Timber;
 
 public class RecipeIngredientActivityWidget extends AppCompatActivity  implements
         LoaderManager.LoaderCallbacks<Cursor>{
-
+    private static final int WIDGET_UPDATE = 1;
     private static final int RECIPE_INGREDIENT_LOADER_ID = 3;
 
     //Recipes mRecipes;
@@ -44,13 +44,12 @@ public class RecipeIngredientActivityWidget extends AppCompatActivity  implement
 
         mContext = this;
 
-//        Intent intent = getIntent();
-//        if(intent.hasExtra("RECIPE_ID")) {
-//            recipeId = intent.getIntExtra("RECIPE_ID", 1);
-//        }
          //We will get the preferred recipe_id from shared preferences now.
         SharedPreferences sharedPref = mContext.getSharedPreferences(getString(R.string.app_shared_pref_file), Context.MODE_PRIVATE) ;
-        recipeId = sharedPref.getInt(getString(R.string.key_favorite_recipe_id), 1);
+        recipeId = Integer.parseInt(sharedPref.getString(getString(R.string.key_favorite_recipe_id), "1"));
+
+        Timber.d("RecipeIngredientActivityWidget:onCreate:Favorite Recipe Id=>"+recipeId);
+
 
         // Bind the views
         ButterKnife.bind(this);

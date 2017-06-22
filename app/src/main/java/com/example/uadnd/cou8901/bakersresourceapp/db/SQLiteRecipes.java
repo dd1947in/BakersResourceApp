@@ -34,6 +34,7 @@ public  class SQLiteRecipes {
         contentValues.put(BakersResourceContract.Ingredients.COLUMN_QUANTITY, ingredient.getQuantity());
         contentValues.put(BakersResourceContract.Ingredients.COLUMN_MEASURE, ingredient.getMeasure());
         contentValues.put(BakersResourceContract.Ingredients.COLUMN_INGREDIENT, ingredient.getIngredient());
+        contentValues.put(BakersResourceContract.Ingredients.COLUMN_UKEY, "" + ingredient.getRecipe_id() + "_" + ingredient.getIngredient()); // Unique Key
 
         ContentResolver contentResolver = context.getContentResolver();
 
@@ -52,6 +53,7 @@ public  class SQLiteRecipes {
         contentValues.put(BakersResourceContract.Steps.COLUMN_DESCRIPTION, step.getDescription());
         contentValues.put(BakersResourceContract.Steps.COLUMN_VIDEO_URL, step.getVideoURL());
         contentValues.put(BakersResourceContract.Steps.COLUMN_THUMB_NAIL_URL, step.getThumbnailURL());
+        contentValues.put(BakersResourceContract.Steps.COLUMN_UKEY, "" + step.getRecipe_id() + "_" + step.getStep_id() );  // Unique Key
 
         ContentResolver contentResolver = context.getContentResolver();
 
@@ -64,7 +66,7 @@ public  class SQLiteRecipes {
         Uri uri;
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(BakersResourceContract.Recipes.COLUMN_RECIPE_ID, recipe.getRecipe_id());
+        contentValues.put(BakersResourceContract.Recipes.COLUMN_RECIPE_ID, recipe.getRecipe_id());  // Unique Key
         contentValues.put(BakersResourceContract.Recipes.COLUMN_NAME, recipe.getName());
         contentValues.put(BakersResourceContract.Recipes.COLUMN_SERVINGS, recipe.getServings());
         contentValues.put(BakersResourceContract.Recipes.COLUMN_IMAGE, recipe.getImage());
@@ -78,7 +80,7 @@ public  class SQLiteRecipes {
     }
 
     public static void persistRecipes(Context context, Recipes recipes) {
-        //Timber.d("persistRecipes");
+        Timber.d("persistRecipes");
         int recipe_count = recipes.recipes.size();
         int recipe_id ;
         for(int i = 0; i < recipe_count; i++) {

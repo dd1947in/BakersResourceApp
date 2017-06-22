@@ -75,6 +75,7 @@
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
+        <!-- App Widget -->
         <receiver android:name=".widget.RecipeIngredientAppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -84,6 +85,21 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/recipe_ingredient_app_widget_info" />
         </receiver>
+
+        <!-- Fixed  this activity  intent filter per the reviewer-->
+        <activity
+            android:name=".ui.RecipeIngredientActivityWidget"
+            android:label="@string/appwidget_text"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+
+            </intent-filter>
+
+        </activity>
+
+        <!--
+<action android:name=".ui.RecipeIngredientActivityWidget.WIDGET_UPDATE" />
         <activity
             android:name=".ui.RecipeIngredientActivityWidget"
             android:label="@string/appwidget_text"
@@ -94,7 +110,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+-->
         <!--
         <activity
             android:name=".ui.RecipeMainActivityWidget"

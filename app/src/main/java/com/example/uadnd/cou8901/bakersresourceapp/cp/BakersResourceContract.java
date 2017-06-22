@@ -63,6 +63,7 @@ public class BakersResourceContract {
         public static final String COLUMN_DESCRIPTION = "description";
         public static final String COLUMN_VIDEO_URL = "videoURL";
         public static final String COLUMN_THUMB_NAIL_URL = "thumbnailURL";
+        public static final String COLUMN_UKEY = "ukey";  //RECIPE_ID_STEP_ID
 
     }
     public static final class Ingredients implements BaseColumns {
@@ -78,6 +79,7 @@ public class BakersResourceContract {
         public static final String COLUMN_QUANTITY = "quantity";
         public static final String COLUMN_MEASURE = "measure";
         public static final String COLUMN_INGREDIENT = "ingredient";
+        public static final String COLUMN_UKEY = "ukey";  // recipe_id_ingredient
 
 
     }

@@ -16,7 +16,7 @@
     <string name="measure_label">Measure :</string>
     <string name="ingredient_label">Ingredient :</string>
     <string name="baking_recipe_url">https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json</string>
-    <string name="appwidget_text">Ingredients Widget</string>
+    <string name="appwidget_text">Favorite.Ingredients</string>
     <string name="add_widget">Add widget</string>
 
     <!-- Keys for saving and restoring recycler view states -->
@@ -30,6 +30,7 @@
     <string name="network_error_message">Fresh recipes loading error. Using cached recipes.</string>
     <string name="app_shared_pref_file">BakersResourceApp_SharedPrefs</string>
     <string name="key_favorite_recipe_id">KEY_FAVORITE_RECIPE_ID</string>
+    <string name="key_favorite_recipe_name">KEY_FAVORITE_RECIPE_NAME</string>
 
 
 </resources>

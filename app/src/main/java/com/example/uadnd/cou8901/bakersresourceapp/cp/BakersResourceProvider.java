@@ -159,7 +159,9 @@ public final class BakersResourceProvider  extends ContentProvider {
             case RECIPES :
             case RECIPES_WITH_ID :
                 //insert into recipes
-                 id = db.insert(BakersResourceContract.Recipes.TABLE_NAME, null, values);
+                 //id = db.insert(BakersResourceContract.Recipes.TABLE_NAME, null, values);
+                id = db.insertWithOnConflict(BakersResourceContract.Recipes.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+                //id = db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
                 if(id > 0) {
                     returnUri = ContentUris.withAppendedId(BakersResourceContract.Recipes.RECIPES_URI, id);
                 }
@@ -168,7 +170,8 @@ public final class BakersResourceProvider  extends ContentProvider {
             case STEPS :
             case STEPS_WITH_ID :
                 //insert into steps
-                 id = db.insert(BakersResourceContract.Steps.TABLE_NAME, null, values);
+                 //id = db.insert(BakersResourceContract.Steps.TABLE_NAME, null, values);
+                id = db.insertWithOnConflict(BakersResourceContract.Steps.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
                 if(id > 0) {
                     returnUri = ContentUris.withAppendedId(BakersResourceContract.Steps.STEPS_URI, id);
                 }
@@ -178,7 +181,8 @@ public final class BakersResourceProvider  extends ContentProvider {
             case INGREDIENTS :
             case INGREDIENTS_WITH_ID :
                 //insert into ingredients
-                 id = db.insert(BakersResourceContract.Ingredients.TABLE_NAME, null, values);
+                 //id = db.insert(BakersResourceContract.Ingredients.TABLE_NAME, null, values);
+                id = db.insertWithOnConflict(BakersResourceContract.Ingredients.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
                 if(id > 0) {
                     returnUri = ContentUris.withAppendedId(BakersResourceContract.Ingredients.INGREDIENTS_URI, id);
                 }
