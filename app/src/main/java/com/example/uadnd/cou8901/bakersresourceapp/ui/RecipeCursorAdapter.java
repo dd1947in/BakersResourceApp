@@ -48,7 +48,15 @@ public class RecipeCursorAdapter extends RecyclerView.Adapter<RecipeCursorAdapte
                 .inflate(R.layout.recipe_layout, parent, false);
         return new RecipeViewHolder(view);
     }
-
+    private int getDrawable(int recipeId) {
+        switch (recipeId) {
+            case 1: return R.drawable.nutellapie;
+            case 2 : return R.drawable.brownies;
+            case 3 : return R.drawable.yellowcake;
+            case 4 : return R.drawable.cheesecake;
+            default: return R.drawable.sample_bake_image;
+        }
+    }
     @Override
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
         Timber.d("onBindViewHolder");
@@ -69,9 +77,10 @@ public class RecipeCursorAdapter extends RecyclerView.Adapter<RecipeCursorAdapte
         //image = "http://image.tmdb.org/t/p/w185/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg";
         if(!image.equals("")) {
             Picasso.with(mContext).load(image).fit().into(holder.mRecipeImageView);
-        } /*else {
-            holder.mRecipeImageView.setImageResource(R.drawable.sample_bake_image);
-        }*/
+        } else {
+            //holder.mRecipeImageView.setImageResource(R.drawable.sample_bake_image);
+            holder.mRecipeImageView.setImageResource(getDrawable(recipeId));
+        }
         Timber.d("before:setOnClickListener");
         holder.mRecipeImageView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

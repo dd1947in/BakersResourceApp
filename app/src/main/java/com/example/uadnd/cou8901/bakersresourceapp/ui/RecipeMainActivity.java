@@ -175,11 +175,11 @@ public class RecipeMainActivity extends AppCompatActivity implements
                 //return;
             } else {
                 Recipes recipes = GsonParser.parse(s);
-                Timber.d("Before : deleteDatabase");
+
                 //Instead of deletedb, Added unique keys to tables and now inserting with CONFLICTREPLACE .
                 // It fixed the crashes
                 //mContext.deleteDatabase(DATABASE_NAME);  // Delete the DB for a fresh load
-                Timber.d("After : deleteDatabase");
+
                 SQLiteRecipes.persistRecipes(mContext, recipes);  // Create the new DB and load recipes
                 Timber.d("After : SQLiteRecipes.persistRecipes");
                 getSupportLoaderManager().initLoader(RECIPE_LOADER_ID, null, RecipeMainActivity.this); // Moved from onCreate()

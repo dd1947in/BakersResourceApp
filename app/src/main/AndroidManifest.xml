@@ -91,13 +91,13 @@
             android:name=".ui.RecipeIngredientActivityWidget"
             android:label="@string/appwidget_text"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-
-            </intent-filter>
-
         </activity>
+<!--
+        <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 
+        </intent-filter>
+-->
         <!--
 <action android:name=".ui.RecipeIngredientActivityWidget.WIDGET_UPDATE" />
         <activity
